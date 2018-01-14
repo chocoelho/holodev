@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/lappis-tools/holodev.svg?branch=master)](https://travis-ci.org/lappis-tools/holodev)
-[![build status](https://gitlab.com/lappis/holodev/badges/master/build.svg)](https://gitlab.com/lappis/holodev/commits/master)
-
 # holodev
+
+[![Build Status](https://travis-ci.org/joenio/holodev.svg?branch=master)](https://travis-ci.org/joenio/holodev)
+[![build status](https://gitlab.com/lappis/holodev/badges/master/build.svg)](https://gitlab.com/lappis/holodev/commits/master)
 
 `holodev` maintains a [UNIX][unix] (Do One Thing and Do It Well) and [GNU][gnu]
 (free as in freedom) philosophies.
@@ -12,7 +12,7 @@ A tool to facilitate the creation of Linux Containers for developing Debian syst
 
 The name `holodev` is a reference to the Holodeck from Star Trek:
 
-* http://en.wikipedia.org/wiki/Holodeck
+* [http://en.wikipedia.org/wiki/Holodeck](http://en.wikipedia.org/wiki/Holodeck)
 
 Supported GNU/Linux distributions:
 
@@ -30,13 +30,17 @@ Supported GNU/Linux distributions:
   * Xenial
 * Archlinux
 * openSUSE
+  * Tumbleweed
+  * 15.0
+  * 42.3
+  * 42.2
 * Fedora
   * Fedora 24
   * Fedora 25
 
 ## sudo
 
-Unfortunately, support for "unprivileged containers" in Debian Jessie is not mature enough, then `holodev` needs` sudo` to create and run "privileged containers".
+Unfortunately, support for "unprivileged containers" in Debian Jessie is not mature enough, then `holodev` needs `sudo` to create and run "privileged containers".
 
 ## Installing in Debian
 
@@ -53,23 +57,29 @@ Install:
     # apt-get update
     # apt-get install holodev
 
-## Installing in OpenSUSE
-
+## Installing in openSUSE
 
 ### Development release
+
 For development releases, you'll need to add the `devel:tools` equivalent to your distro version:
 
 #### Tumbleweed
+
     # zypper ar http://download.opensuse.org/repositories/devel:/tools/openSUSE_Tumbleweed/devel:tools.repo
 
 #### Leap
-    # zypper ar http://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_42.1/devel:tools.repo
 
-#### 13.2
-    # zypper ar http://download.opensuse.org/repositories/devel:/tools/openSUSE_13.2/devel:tools.repo
+##### 15.0
 
-#### 13.1
-    # zypper ar http://download.opensuse.org/repositories/devel:/tools/openSUSE_13.1/devel:tools.repo
+    # zypper ar http://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_15.0/devel:tools.repo
+
+##### 42.3
+
+    # zypper ar http://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_42.3/devel:tools.repo
+
+##### 42.2
+
+    # zypper ar http://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_42.2/devel:tools.repo
 
 Then update your repo list:
 
@@ -81,7 +91,7 @@ And finally install `holodev`:
 
 ### Stable release
 
-`holodev` is part of the default repositories for current OpenSUSE distros (Leap and Tumbleweed), so no additional repo is needed.
+`holodev` is part of the default repositories for openSUSE Tumbleweed, so no additional repo is needed.
 
 Make sure your repos are updated:
 
@@ -90,7 +100,6 @@ Make sure your repos are updated:
 And install `holodev`:
 
     # zypper in holodev
-
 
 ## Installing in Archlinux
 
@@ -145,9 +154,9 @@ This will create a container called `noosfero`.
 
 `holodev` has a small test suite implemented based on `shunit2`:
 
-* http://github.com/kward/shunit2
+* [http://github.com/kward/shunit2](http://github.com/kward/shunit2)
 
-To run these tests you need to install `vagrant`,` virtualbox` and run the command `vagrant up`. In some cases you may need to install `Virtualbox-guest-utils` and perform the following:
+To run these tests you need to install `vagrant`, `virtualbox` and run the command `vagrant up`. In some cases you may need to install `Virtualbox-guest-utils` and perform the following:
 
     dpkg-reconfigure virtualbox-dkms
 
