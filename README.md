@@ -6,6 +6,9 @@
 `holodev` maintains a [UNIX][unix] (Do One Thing and Do It Well) and [GNU][gnu]
 (free as in freedom) philosophies.
 
+[![Build Status](https://travis-ci.org/lappis-tools/holodev.svg?branch=master)](https://travis-ci.org/lappis-tools/holodev)
+[![build status](https://gitlab.com/lappis/holodev/badges/master/build.svg)](https://gitlab.com/lappis/holodev/commits/master)
+
 ## A holodeck for software development
 
 A tool to facilitate the creation of Linux Containers for developing Debian systems
