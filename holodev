@@ -240,6 +240,10 @@ copy_dot_files_into_container() {
     run sh -c "cp -r ~$HOST_USER/.gnupg /var/lib/lxc/$CONTAINER_NAME/rootfs/$HOME_DIRECTORY/"
     run sh -c "chown -R $HOST_USER:nogroup /var/lib/lxc/$CONTAINER_NAME/rootfs/$HOME_DIRECTORY/.gnupg"
   fi
+  if [ -d ~/.ssh ]; then
+    run sh -c "cp -r ~$HOST_USER/.ssh /var/lib/lxc/$CONTAINER_NAME/rootfs/$HOME_DIRECTORY/"
+    run sh -c "chown -R $HOST_USER:nogroup /var/lib/lxc/$CONTAINER_NAME/rootfs/$HOME_DIRECTORY/.ssh"
+  fi
   if [ -f ~/.gitconfig ]; then
     run sh -c "cp ~$HOST_USER/.gitconfig /var/lib/lxc/$CONTAINER_NAME/rootfs/$HOME_DIRECTORY/"
     run sh -c "chown -R $HOST_USER:nogroup /var/lib/lxc/$CONTAINER_NAME/rootfs/$HOME_DIRECTORY/.gitconfig"
@@ -361,13 +365,11 @@ do_create() {
 }
 
 do_info() {
-  highlight "getting info about '$CONTAINER_NAME'"
   run lxc-info -n $CONTAINER_NAME
 }
 
 do_run() {
   COMMAND="$@"
-  highlight "running '$COMMAND' under '$CONTAINER_NAME'"
   start_if_stopped
   lxc_attach su - $HOST_USER -c "$COMMAND"
 }
@@ -413,21 +415,18 @@ do_start() {
 }
 
 do_stop() {
-  highlight "stopping '$CONTAINER_NAME'"
   run lxc-stop -n $CONTAINER_NAME
 }
 
 do_destroy() {
-  highlight "destroing '$CONTAINER_NAME'"
   run lxc-destroy -n $CONTAINER_NAME -f
 }
 
 do_list() {
-  highlight "listing containers"
   if $ARGV_ALL; then
     run lxc-ls -1
   else
-    run lxc-ls -1 $CURRENT_DIRECTORY
+    run lxc-ls -1 ^$CURRENT_DIRECTORY-
   fi
 }
 
